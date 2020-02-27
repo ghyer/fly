@@ -1,0 +1,201 @@
+page {
+    --red: red;
+    --blue: blue;
+    --green: green;
+    --yellow: #fdcb6e;
+}
+
+body {
+    margin: 0;
+    background: #f3f3f3;
+}
+
+#red {
+    background-color: var(--red);
+}
+
+.red-shadow {
+    box-shadow: 4px 4px 10px var(--red);
+}
+
+#blue {
+    background-color: var(--blue);
+}
+
+.blue-shadow {
+    box-shadow: 4px 4px 10px var(--blue);
+}
+
+#green {
+    background-color: var(--green);
+}
+
+.green-shadow {
+    box-shadow: 4px 4px 10px var(--green);
+}
+
+#yellow {
+    background-color: var(--yellow);
+}
+
+.yellow-shadow {
+    box-shadow: 4px 4px 10px var(--yellow);
+}
+
+.map {
+    position: fixed;
+    width: 510px;
+    padding-left: 10px;
+    padding-top: 40px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    background: #ffffff;
+}
+
+.turn-1 {
+    color: var(--red);
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.turn-2 {
+    color: var(--blue);
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.turn-4 {
+    color: var(--green);
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.turn-8 {
+    color: var(--yellow);
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.dice {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.button {
+    width: 350px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.color {
+    width: auto;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.color-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 440px;
+    margin-bottom: 20px;
+}
+
+.color-child {
+    width: 170px;
+    height: 170px;
+    margin: 10px;
+    transition: box-shadow, margin-left, margin-top 120ms;
+    word-break: break-all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 700px;
+}
+
+input {
+    width: 200px;
+    height: 50px;
+}
+
+.dot {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background-color: black;
+    top: 74px;
+    left: 45px;
+}
+
+.red_airplane1,
+.red_airplane2,
+.red_airplane3,
+.red_airplane4,
+.green_airplane1,
+.green_airplane2,
+.green_airplane3,
+.green_airplane4,
+.blue_airplane1,
+.blue_airplane2,
+.blue_airplane3,
+.blue_airplane4,
+.yellow_airplane1,
+.yellow_airplane2,
+.yellow_airplane3,
+.yellow_airplane4 {
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.error {
+    margin-top: 20px;
+    height: 80px;
+    width: 400px;
+}
+
+.people {
+    display: flex;
+    width: 300px;
+    justify-content: space-around;
+    height: 70px;
+}
+
+.people-cnt {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #bbbbbb;
+    border: 2px solid;
+    color: #bbbbbb;
+    transition: border, color 200ms;
+}

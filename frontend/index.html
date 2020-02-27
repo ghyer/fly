@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <title>飞行棋</title>
+    <meta name="viewport" content="width=530, user-scalable=0" />
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/socket.io.js"></script>
+</head>
+
+<body>
+    <!-- 加入房间 -->
+    <form class="join" name="table" onsubmit="joinRoom(); return false">
+        <div>
+            <div class="input-group mb-3" style="width: 300px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">用户名</span>
+                </div>
+                <input minlength="1" maxlength="15" type="text" id="nickname" class="form-control" placeholder="nickname" aria-label="nickname" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3" style="width: 300px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">房间代码</span>
+                </div>
+                <input minlength="1" maxlength="15" type="text" id="room" class="form-control" placeholder="token" aria-label="token" aria-describedby="basic-addon1">
+            </div>
+            <div class="people">
+                <div class="people-cnt" data="1">1人</div>
+                <div class="people-cnt" data="2">2人</div>
+                <div class="people-cnt" data="3">3人</div>
+                <div class="people-cnt" data="4">4人</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 300px;">加入房间</button>
+        </div>
+        <div class="error" style="visibility: hidden;"></div>
+    </form>
+
+    <!-- 选择颜色 -->
+    <form class="color" name="choose">
+        <div class="color-container">
+            <div onclick="chooseColor(1); return false" id="red" class="color-child">待选</div>
+            <div onclick="chooseColor(2); return false" id="blue" class="color-child">待选</div>
+            <div onclick="chooseColor(4); return false" id="green" class="color-child">待选</div>
+            <div onclick="chooseColor(8); return false" id="yellow" class="color-child">待选</div>
+        </div>
+        <div class="loading" style="font-size: 30px;letter-spacing: 2px;">等待其他玩家加入中...</div>
+    </form>
+
+    <!-- 棋局 -->
+    <div class="main">
+
+        <!-- 棋盘 -->
+        <div class="map">
+            <img src="images/1.jpg" style="width: 100%;" />
+            <button style="margin-top: 10px; width: 100%;" type="button" onclick="getDice(); return false" class="btn btn-dark">投掷</button>
+            <div class="dice"></div>
+            <div class="turn-1"></div>
+            <div class="turn-2"></div>
+            <div class="turn-4"></div>
+            <div class="turn-8"></div>
+        </div>
+
+        <!-- 棋子 -->
+        <div class="piece">
+            <div class="red">
+                <div onclick="choosePiece(1, 1)" class="red_airplane1" id="red">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(2, 1)" class="red_airplane2" id="red">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(3, 1)" class="red_airplane3" id="red">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(4, 1)" class="red_airplane4" id="red">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+            </div>
+
+            <div class="blue">
+                <div onclick="choosePiece(1, 2)" class="blue_airplane1" id="blue">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(2, 2)" class="blue_airplane2" id="blue">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(3, 2)" class="blue_airplane3" id="blue">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(4, 2)" class="blue_airplane4" id="blue">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+            </div>
+
+            <div class="green">
+                <div onclick="choosePiece(1, 4)" class="green_airplane1" id="green">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(2, 4)" class="green_airplane2" id="green">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(3, 4)" class="green_airplane3" id="green">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(4, 4)" class="green_airplane4" id="green">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+            </div>
+
+            <div class="yellow">
+                <div onclick="choosePiece(1, 8)" class="yellow_airplane1" id="yellow">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(2, 8)" class="yellow_airplane2" id="yellow">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(3, 8)" class="yellow_airplane3" id="yellow">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+                <div onclick="choosePiece(4, 8)" class="yellow_airplane4" id="yellow">
+                    <img src="images/airplane.png" style="width: 80%;" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/Game.js"></script>
+    <script src="js/Page.js"></script>
+    <script src="js/Socket.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
